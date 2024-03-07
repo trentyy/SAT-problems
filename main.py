@@ -8,11 +8,6 @@ stations = {}
 for reg in regs:
     stations[reg] = {0:0, 1:0, 2:0}
 
-class StationData:
-    def __init__(self, reg):
-        self.reg = reg
-        self.state
-
 async def station(client, state_data, reg):
     while True:
         await asyncio.sleep(1)
