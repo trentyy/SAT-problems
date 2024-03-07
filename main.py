@@ -16,8 +16,8 @@ class StationData:
 async def station(client, state_data, reg):
     while True:
         await asyncio.sleep(1)
-        # result = client.read_holding_registers(reg, 1)
-        result = random.randint(0,2)
+        result = client.read_holding_registers(reg, 1)
+        # result = random.randint(0,2)
         state_data[result] = state_data[result] + 1
         print(reg, state_data)
 
@@ -27,5 +27,5 @@ if __name__ == "__main__":
     loop = asyncio.get_event_loop()
     tasks = []
     for _ in regs:
-        tasks.append(loop.create_task(station(None, stations[_], _)))
+        tasks.append(loop.create_task(station(client, stations[_], _)))
     loop.run_until_complete(asyncio.wait(tasks))
